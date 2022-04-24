@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기</title>
+    <style>
+      div {
+        width: 400px;
+        text-align: center;
+        border: 20px ridge gray;
+        padding: 10px;
+      }
+      input {
+        width: 380px;
+        height: 20px;
+      }
+      button {
+        width: 70px;
+        height: 40px;
+        margin: 10px;
+      }
+    </style>
+    <script>
+      let exp = ""; // input text 안에 있는 문자열 식 값
+      function calc(event) {
+        // 이벤트 객체를 통해서 이벤트가 발생한 태그의 정보를 얻어올수 있다.
+        let button = event.target.innerText; //우리가 클릭한 버튼 안에 있는 text값
+
+        // 조건문으로 버튼마다 어떤 상황이 일어나는지 처리를 해준다.
+        if (button == "=") {
+          // 우리가 = 버튼을 누르면 식의 값을 계산해서 그 결과를 보여준다.
+          document.getElementById("exp").value = eval(exp);
+          // 그 결과를 출력할 input 태그를 가져와서 value 값을 계산한 후에 저장
+
+          // 따로 우리가 관리하고있는 exp 값도 최신화
+          exp = eval(exp);
+        } else if (button == "CE" || button == "C") {
+          //우리가 CE 버튼 또는 C 버튼을 눌렀을때 input의값을 0으로 초기화
+          document.getElementById("exp").value = 0;
+
+          // 따로 우리가 관리하고 있는 exp값도 초기화
+          // exp 문자열이기 때문에 0이아니라 공백으로 초기화
+          exp = "";
+        } else if (button == "BACK") {
+          // 우리가 BACK 버튼을 누르면 문자열의 맨 끝 한글자를 지운다.
+          exp = exp.slice(0, -1); // 음수 인덱스는 문자열의 끝에서부터 시작
+          // 0 번 인덱스부터 끝에서 1번 떨어져있는 문자열 까지 잘라낸다.
+          // substr(0, exp.length -1);
+          document.getElementById("exp").value = exp;
+        } else if (button == "N") {
+          // 아무일도 하지 않음
+          return;
+        } else {
+          // 나머지는 모두 숫자 버튼 또는 연산 기호
+          exp += button;
+          document.getElementById("exp").value = exp;
+        }
+      }
+
+      function initial() {
+        // html 안에 있는 모든 button 태그에 click 이벤트 처리 함수 달기
+        let buttons = document.getElementsByTagName("button");
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener("click", calc);
+          // 모든 버튼에 click 이벤트 처리 함수 달기
+        }
+      }
+    </script>
+  </head>
+  <body onload="initial()">
+    <h1>계산기 만들기</h1>
+    <hr />
+    <div>
+      <input type="text" id="exp" value="0" />
+      <button>BACK</button>
+      <button>CE</button>
+      <button>C</button>
+      <button>=</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>/</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>-</button>
+      <button>0</button>
+      <button>+</button>
+      <button>N</button>
+      <button>N</button>
+    </div>
+  </body>
+</html>

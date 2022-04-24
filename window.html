@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let newWindow; // 새창의 정보를 저장
+      function load(url) {
+        // 주소를 파라미터로 (매개변수) 전달
+        // window.open(url); // 새창 열기
+        newWindow = window.open(url, "mywindow"); // 새창에 이름을 준다. 그정보를 저장
+      }
+      function closeWindow() {
+        newWindow.close(); // 기억해놓았던 새창의 정보를 이용하여 새창 닫기
+      }
+    </script>
+  </head>
+  <body>
+    <a href="javascript:load('https://www.naver.com')">네이버</a>
+    <!-- href 안에 javascript: 사용시 자바스크립트 코드 실행-->
+    <a href="javascript:load('https://www.google.com')">구글</a>
+    <a href="javascript:load('https://www.marvel.com')">마블</a>
+    <a href="javascript:closeWindow()">새창 닫기</a>
+  </body>
+</html>

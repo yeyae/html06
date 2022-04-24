@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: skyblue;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>마우스 움직이기 이벤트</h1>
+    <h3>onmousemove</h3>
+    <hr />
+    <p>
+      이미지 위에 마우스를 움직일때 onmousemove 이벤트가 발생하고, 마우스의
+      위치를 보여줍니다.
+    </p>
+    <img src="Desert.jpg" onmousemove="where(event)" width="500px" />
+    <hr />
+    <!-- 마우스 이동 이벤트 정보 -->
+    <div id="div"></div>
+    <script>
+      /*
+            client x, client y : 브라우저 기준 위치
+            screen x, screen y : 모니터 기준 위치
+            offset x, offset y : 타겟 객체(태그) 기준 위치
+            x , y : 부모 객체(태그) 기준 위치
+        */
+
+      let div = document.getElementById("div");
+      // div 태그에 마우스 위치 정보등 이동 이벤트 관련 정보 출력
+      function where(event) {
+        let text = "버튼 = " + event.button + "<br>";
+        text +=
+          "(screenX, screenY) = " +
+          event.screenX +
+          "," +
+          event.screenY +
+          "<br>";
+        text +=
+          "(clientX, clientY) = " +
+          event.clientX +
+          "," +
+          event.clientY +
+          "<br>";
+        text +=
+          "(offsetX, offsetY) = " +
+          event.offsetX +
+          "," +
+          event.offsetY +
+          "<br>";
+        text += "(x,y) = " + event.x + "," + event.y + "<br>";
+        // 우리가 작성한 HTML코드를 div 태그 안에 입력
+        div.innerHTML = text;
+      }
+    </script>
+  </body>
+</html>

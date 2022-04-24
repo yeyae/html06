@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function myAlert(time) {
+        // 타이머 함수
+        alert(time + "초 지났습니다.");
+      }
+      //setTimeout("myAlert(3)", 3000); // 3초 후에 myAlert라는 함수를 실행
+      // setTimeout( 함수이름과매개변수 , 시간(밀리세컨드) )
+      // clearTimeout() => 시간이 지나기 전에 타이머 해제
+      let interval = setInterval("myAlert(3)", 3000); // 3초마다 myAlert 함수를 실행
+      // setInterval( 함수이름과매개변수, 시간(밀리세컨드))
+      clearTimeout(interval); // clearTimeout(인터벌 변수) => 반복 그만!
+    </script>
+  </head>
+  <body></body>
+</html>

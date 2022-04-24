@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function find() {
+        let found = null; // 선택된 라디오 버튼
+        let city = document.getElementsByName("city");
+        // city => name = "city" 인 태그의 배열
+        for (let i = 0; i < city.length; i++) {
+          // 그래서 만약 어떤 라디오 버튼이 클릭된 상태라면
+          if (city[i].checked == true) {
+            // 그 라디오 버튼을 found에 넣어준다.
+            found = city[i];
+          }
+        }
+        //found 가 null 아니면 라디오버튼이 선택되었다는 의미
+        if (found != null) {
+          alert(found.value + "이(가) 선택되었습니다.");
+        } else {
+          alert("아무것도 선택하지 않았습니다.");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>선택된 라디오 버튼 알아내기</h1>
+    <hr />
+    <form>
+      <input type="radio" name="city" value="seoul" checked />서울
+      <input type="radio" name="city" value="busan" />부산
+      <input type="radio" name="city" value="chunchen" />춘천
+      <input type="button" value="선택된 값 찾기" onclick="find()" />
+    </form>
+  </body>
+</html>

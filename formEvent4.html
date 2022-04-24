@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function draw() {
+        let sel = document.getElementById("coffee"); // <select> 태그 가져옵니다.
+        let img = document.getElementById("coffeeImage"); // <img> 태그 가져옵니다. (커피 이미지)
+
+        // img 의 src 속성에 우리가 선택한 option의 value에 있는 img 경로를 지정해준다.
+        img.src = sel.options[sel.selectedIndex].value;
+        console.log(sel.selectedIndex);
+        // sel.options => <select> 태그 내의 <option> 태그들의 목록을 배열로 반환
+        // sel.selectedIndex => 우리가 선택한 <option> 태그의 인덱스 번호
+      }
+    </script>
+  </head>
+  <body onload="draw()">
+    <!-- body 가 로드 완료되면 draw() 이벤트 처리 함수 실행-->
+    <h1>select 에서 선택한 값 알아내기</h1>
+    <hr />
+    <p>커피를 선택하면 이미지가 출력됩니다.</p>
+    <form>
+      <select id="coffee" onchange="draw()">
+        <!-- onchange : 내가 선택한 옵션이 바뀔때 발생 -->
+        <option value="바닐라라떼.jfif">바닐라라떼</option>
+        <option value="아메리카노.jfif">아메리카노</option>
+        <option value="카페라떼.jfif">카페라떼</option>
+        <option value="콜드브루.jfif">콜드브루</option>
+      </select>
+      <img id="coffeeImage" src="" alt="이미지 없음" />
+    </form>
+  </body>
+</html>

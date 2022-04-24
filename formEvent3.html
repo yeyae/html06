@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let sum = 0; // 가격의 합
+      function calc(obj) {
+        // 체크박스가 선택된 상태라면 sum에 해당 상품의 가격을 더해준다.
+        if (obj.checked == true) {
+          sum += parseInt(obj.value); // 문자열을 숫자로 바꿔준 후에 합 계산
+        } else {
+          // 체크박스의 체크가 해제된 상태라면 가격을 빼줘야 된다.
+          sum -= parseInt(obj.value);
+        }
+
+        // 더한후 최종 가격을 text input 태그의 값으로 설정해준다.
+        let result = document.getElementById("sum");
+        result.value = sum;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>물품을 선택하면 가격의 합이 계산됩니다.</h1>
+    <hr />
+    <form>
+      <input
+        type="checkbox"
+        name="hap"
+        value="20000"
+        onclick="calc(this)"
+      />모자 2만원
+      <input
+        type="checkbox"
+        name="shose"
+        value="99000"
+        onclick="calc(this)"
+      />신발 9만9천원
+      <input
+        type="checkbox"
+        name="bag"
+        value="60000"
+        onclick="calc(this)"
+      />가방 6만원
+      <br />
+      지불하실 금액 <input type="text" id="sum" value="0" />
+    </form>
+  </body>
+</html>

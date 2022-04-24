@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>키 이벤트</title>
+    <script>
+      function keyDown(event) {
+        // 키 정보를 표시할 div 객체 가져오기
+        let div = document.getElementById("div");
+        // div 안에 표시할 문자열
+        let str = "";
+        // 이벤트 객체를 통해서 우리가 누른 키 정보 가져오기
+        str += "event.key = " + event.key + "<br>";
+        str += "event.code = " + event.code + "<br>";
+        // div 안의 HTML 코드를 str로 바꾸기
+        div.innerHTML = str;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>키 이벤트</h1>
+    <hr />
+    <p>텍스트 창에 키를 입력해 보세요.</p>
+    <br />
+    <input type="text" id="text" onkeydown="keyDown(event)" />
+    <div id="div" style="background-color: skyblue; width: 250px; height: 50px">
+      <!-- 어떤 키를 눌렀는지 표시-->
+    </div>
+  </body>
+</html>

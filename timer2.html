@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>텍스트 회전</h1>
+    <hr />
+    <div>
+      <span id="span" style="background-color: yellow">환영합니다</span>
+    </div>
+    <script>
+      let span = document.getElementById("span"); // html 안의 id가 span인 태그 가져오기
+      let timerId = setInterval("doRotate()", 200); // 나중에 정지하기위해서 정보 저장
+
+      // span 태그를 클릭했을때 정지
+      span.onclick = function (event) {
+        //마우스 클릭 이벤트 함수 등록 (익명함수 => 일회용 함수)
+        clearInterval(timerId);
+      };
+
+      //글자를 회전시키는 함수
+      function doRotate() {
+        let str = span.innerText; // span 안에있는 text 가져오기
+        //첫문자를 떼서
+        let firstChar = str.substr(0, 1); // 처음 문자를 떼어온다.
+        let restChar = str.substr(1, str.length - 1); // 처음문자를 뺀 나머지 문자열
+        //뒤에 붙인다.
+        restChar += firstChar;
+        //span 안에 있는 text 저장
+        span.innerText = restChar;
+      }
+    </script>
+  </body>
+</html>

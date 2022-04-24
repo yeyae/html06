@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        position: absolute;
+      }
+
+      #sun {
+        left: 500px;
+        top: 400px;
+        font-size: 5em;
+      }
+    </style>
+    <script>
+      function rotate() {
+        let earthMove = 0; // 지구가 움직일 거리
+        let moonMove = 0; // 달이 움직일 거리
+
+        let sun = document.getElementById("sun");
+        let earth = document.getElementById("earth");
+        let moon = document.getElementById("moon");
+
+        //setInterval 을 통해서 지구와 달을 계속 움직이기
+        setInterval(function () {
+          // 실제로 지구와 달이 움직이는 동작
+          let earthLeft = 500 + 300 * Math.cos(earthMove);
+          let earthTop = 400 + 300 * Math.sin(earthMove);
+
+          let moonLeft = earthLeft + 50 * Math.cos(moonMove);
+          let moonTop = earthTop + 50 * Math.sin(moonMove);
+
+          earth.style.left = earthLeft + "px";
+          earth.style.top = earthTop + "px";
+
+          moon.style.left = moonLeft + "px";
+          moon.style.top = moonTop + "px";
+
+          earthMove += 0.1; // 천천히 움직임
+          moonMove += 0.5; // 지구가 도는 속도보다 5배 빠르게
+          // 실제로 earthMove, moonMove는 각도를 의미한다.
+        }, 100);
+      }
+    </script>
+  </head>
+  <body onload="rotate()">
+    <h1 id="sun">@</h1>
+    <h1 id="earth">O</h1>
+    <h1 id="moon">*</h1>
+  </body>
+</html>
